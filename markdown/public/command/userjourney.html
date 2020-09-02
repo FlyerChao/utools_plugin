@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h1 id="user-journey-diagram">User Journey Diagram</h1>
+<blockquote>
+<p>User journeys describe at a high level of detail exactly what steps different users take to complete a specific task within a system, application or website. This technique shows the current (as-is) user workflow, and reveals areas of improvement for the to-be workflow. (Wikipedia)</p>
+</blockquote>
+<p>Mermaid can render user journey diagrams:</p>
+<pre><code class="language-markdown">journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me</code></pre>
+<pre><code class="language-mermaid">journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me</code></pre>
+<p>Each user journey is split into sections, these describe the part of the task
+the user is trying to complete.</p>
+<p>Tasks syntax is <code>Task name: &lt;score&gt;: &lt;comma separated list of actors&gt;</code></p>
+</div></body></html>

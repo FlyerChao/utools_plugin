@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h1 id="entity-relationship-diagrams">Entity Relationship Diagrams</h1>
+<blockquote>
+<p>An entity–relationship model (or ER model) describes interrelated things of interest in a specific domain of knowledge. A basic ER model is composed of entity types (which classify the things of interest) and specifies relationships that can exist between entities (instances of those entity types). Wikipedia.</p>
+</blockquote>
+<p>Note that practitioners of ER modelling almost always refer to <em>entity types</em> simply as <em>entities</em>.  For example the CUSTOMER entity type would be referred to simply as the CUSTOMER entity.  This is so common it would be inadvisable to do anything else, but technically an entity is an abstract <em>instance</em> of an entity type, and this is what an ER diagram shows - abstract instances, and the relationships between them.  This is why entities are always named using singular nouns.</p>
+<p>Mermaid can render ER diagrams</p>
+<pre><code class="language-markdown">erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses</code></pre>
+<pre><code class="language-mermaid">erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses</code></pre>
+<p>Entity names are often capitalised, although there is no accepted standard on this, and it is not required in Mermaid.</p>
+<p>Relationships between entities are represented by lines with end markers representing cardinality.  Mermaid uses the most popular crow&#39;s foot notation. The crow&#39;s foot intuitively conveys the possibility of many instances of the entity that it connects to.</p>
+<h2 id="status">Status</h2>
+<p>ER diagrams are a new feature in Mermaid and are <strong>experimental</strong>.  There are likely to be a few bugs and constraints, and enhancements will be made in due course.  Currently you can only define entities and relationships, but not attributes.</p>
+<h2 id="syntax">Syntax</h2>
+<h3 id="entities-and-relationships">Entities and Relationships</h3>
+<p>Mermaid syntax for ER diagrams is compatible with PlantUML, with an extension to label the relationship.  Each statement consists of the following parts, all of which are mandatory:</p>
+<pre><code class="language-markdown">    &lt;first-entity&gt; &lt;relationship&gt; &lt;second-entity&gt; : &lt;relationship-label&gt;</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>first-entity</code> is the name of an entity.  Names must begin with an alphabetic character and may also contain digits and hyphens</li>
+<li><code>relationship</code> describes the way that both entities inter-relate.  See below.</li>
+<li><code>second-entity</code> is the name of the other entity</li>
+<li><code>relationship-label</code> describes the relationship from the perspective of the first entity.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-markdown">    PROPERTY ||--|{ ROOM : contains</code></pre>
+<p>This statement can be read as <em>a property contains one or more rooms, and a room is part of one and only one property</em>. You can see that the label here is from the first entity&#39;s perspective: a property contains a room, but a room does not contain a property.  When considered from the perspective of the second entity, the equivalent label is usually very easy to infer. (Some ER diagrams label relationships from both perspectives, but this is not supported here, and is usually superfluous).</p>
+<h3 id="relationship-syntax">Relationship Syntax</h3>
+<p>The <code>relationship</code> part of each statement can be broken down into three sub-components:</p>
+<ul>
+<li>the cardinality of the first entity with respect to the second,</li>
+<li>whether the relationship confers identity on a &#39;child&#39; entity</li>
+<li>the cardinality of the second entity with respect to the first</li>
+</ul>
+<p>Cardinality is a property that describes how many elements of another entity can be related to the entity in question.  In the above example a <code>PROPERTY</code> can have one or more <code>ROOM</code> instances associated to it, whereas a <code>ROOM</code> can only be associated with one <code>PROPERTY</code>.  In each cardinality marker there are two characters.  The outermost character represents a maximum value, and the innermost character represents a minimum value.  The table below summarises possible cardinalities.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Value (left)</th>
+<th align="center">Value (right)</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>|o</code></td>
+<td align="center"><code>o|</code></td>
+<td>Zero or one</td>
+</tr>
+<tr>
+<td align="center"><code>||</code></td>
+<td align="center"><code>||</code></td>
+<td>Exactly one</td>
+</tr>
+<tr>
+<td align="center"><code>}o</code></td>
+<td align="center"><code>o{</code></td>
+<td>Zero or more (no upper limit)</td>
+</tr>
+<tr>
+<td align="center"><code>}|</code></td>
+<td align="center"><code>|{</code></td>
+<td>One or more (no upper limit)</td>
+</tr>
+</tbody></table>
+<h3 id="identification">Identification</h3>
+<p>Relationships may be classified as either <em>identifying</em> or <em>non-identifying</em> and these are rendered with either solid or dashed lines respectively. This is relevant when one of the entities in question can not have independent existence without the other.  For example a firm that insures people to drive cars might need to store data on <code>NAMED-DRIVER</code>s. In modelling this we might start out by observing that a <code>CAR</code> can be driven by many <code>PERSON</code> instances, and a <code>PERSON</code> can drive many <code>CAR</code>s - both entities can exist without the other, so this is a non-identifying relationship that we might specify in Mermaid as: <code>PERSON }|..|{ CAR : &quot;driver&quot;</code>.  Note the two dots in the middle of the relationship that will result in a dashed line being drawn between the two entities.  But when this many-to-many relationship is resolved into two one-to-many relationships, we observe that a <code>NAMED-DRIVER</code> cannot exist without both a <code>PERSON</code> and a <code>CAR</code> - the relationships become identifying and would be specified using hyphens, which translate to a solid line:</p>
+<pre><code class="language-markdown">    CAR ||--o{ NAMED-DRIVER : allows
+    PERSON ||--o{ NAMED-DRIVER : is</code></pre>
+<h3 id="other-things">Other Things</h3>
+<ul>
+<li>If you want the relationship label to be more than one word, you must use double quotes around the phrase</li>
+<li>If you don&#39;t want a label at all on a relationship, you must use an empty double-quoted string</li>
+</ul>
+<h2 id="styling">Styling</h2>
+<h3 id="config-options">Config options</h3>
+<p>For simple color customization:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Used as</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>fill</code></td>
+<td align="left">Background color of an entity</td>
+</tr>
+<tr>
+<td align="left"><code>stroke</code></td>
+<td align="left">Border color of an entity, line color of a relationship</td>
+</tr>
+</tbody></table>
+<h3 id="classes-used">Classes used</h3>
+<p>The following CSS class selectors are available for richer styling:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Selector</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>.er.entityBox</code></td>
+<td align="left">The box representing an entity</td>
+</tr>
+<tr>
+<td align="left"><code>.er.entityLabel</code></td>
+<td align="left">The label for an entity</td>
+</tr>
+<tr>
+<td align="left"><code>.er.relationshipLabel</code></td>
+<td align="left">The label for a relationship</td>
+</tr>
+<tr>
+<td align="left"><code>.er.relationshipLabelBox</code></td>
+<td align="left">The box surrounding a relationship label</td>
+</tr>
+<tr>
+<td align="left"><code>.er.relationshipLine</code></td>
+<td align="left">The line representing a relationship between entities</td>
+</tr>
+</tbody></table>
+</div></body></html>

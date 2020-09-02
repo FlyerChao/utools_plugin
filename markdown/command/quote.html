@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h2 id="引用">引用</h2>
+<p><strong>语法说明：</strong>
+ 引用需要在被引用的文本前加上&gt;符号。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="language-undefined">&gt; 这是一个有两段文字的引用,
+&gt;无意义的占行文字1.
+&gt;无意义的占行文字2.
+&gt;
+&gt;无意义的占行文字3.
+&gt;无意义的占行文字4.</code></pre>
+<p><strong>显示效果：</strong></p>
+<blockquote>
+<p>这是一个有两段文字的引用,
+ 无意义的占行文字1.
+ 无意义的占行文字2.</p>
+<p>无意义的占行文字3.
+ 无意义的占行文字4.</p>
+</blockquote>
+<p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 &gt;：</p>
+<p><strong>代码：</strong></p>
+<pre><code class="language-undefined">&gt; 这是一个有两段文字的引用,
+无意义的占行文字1.
+无意义的占行文字2.
+
+&gt;无意义的占行文字3.
+无意义的占行文字4.</code></pre>
+<p><strong>显示效果：</strong></p>
+<blockquote>
+<p>这是一个有两段文字的引用,
+ 无意义的占行文字1.
+ 无意义的占行文字2.</p>
+</blockquote>
+<blockquote>
+<p>无意义的占行文字3.
+ 无意义的占行文字4.</p>
+</blockquote>
+<h3 id="61-引用的多层嵌套">6.1. 引用的多层嵌套</h3>
+<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt;：</p>
+<p><strong>代码：</strong></p>
+<pre><code class="language-ruby">&gt;&gt;&gt; 请问 Markdwon 怎么用？ - 小白
+
+&gt;&gt;自己看教程！ - 愤青
+
+&gt;教程在哪？ - 小白</code></pre>
+<p><strong>显示效果：</strong></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>请问 Markdwon 怎么用？ - 小白</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>自己看教程！ - 愤青</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>教程在哪？ - 小白</p>
+</blockquote>
+<h3 id="62-引用其它要素">6.2. 引用其它要素</h3>
+<p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
+ <strong>代码：</strong></p>
+<pre><code class="language-kotlin">&gt; 1.   这是第一行列表项。
+&gt; 2.   这是第二行列表项。
+&gt;
+&gt; 给出一些例子代码：
+&gt; 
+&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);</code></pre>
+<p><strong>显示效果：</strong></p>
+<blockquote>
+<ol>
+<li>这是第一行列表项。</li>
+<li>这是第二行列表项。</li>
+</ol>
+<p>给出一些例子代码：</p>
+<pre><code class="language-kotlin">return shell_exec(&quot;echo $input | $markdown_script&quot;);</code></pre>
+</blockquote>
+</div></body></html>

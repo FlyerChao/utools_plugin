@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h2 id="表格">表格</h2>
+<p><strong>语法说明：</strong></p>
+<ol>
+<li>不管是哪种方式，第一行为表头，第二行分隔表头和主体部分，第三行开始每一行为一个表格行。</li>
+<li>列于列之间用管道符|隔开。原生方式的表格每一行的两边也要有管道符。</li>
+<li>第二行还可以为不同的列指定对齐方向。默认为左对齐，在-右边加上:就右对齐。</li>
+</ol>
+<p><strong>代码：</strong></p>
+<p>简单方式写表格：</p>
+<pre><code class="language-ruby">学号|姓名|分数
+-|-|-
+小明|男|75
+小红|女|79
+小陆|男|92</code></pre>
+<p>原生方式写表格：</p>
+<pre><code class="language-ruby">|学号|姓名|分数|
+|-|-|-|
+|小明|男|75|
+|小红|女|79|
+|小陆|男|92|</code></pre>
+<p>为表格第二列指定方向：</p>
+<pre><code class="language-ruby">产品|价格
+-|-:
+Leanote 高级账号|60元/年
+Leanote 超级账号|120元/年</code></pre>
+<p><strong>显示效果：</strong>
+ 简单方式写表格：</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>姓名</th>
+<th>分数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>男</td>
+<td>75</td>
+</tr>
+<tr>
+<td>小红</td>
+<td>女</td>
+<td>79</td>
+</tr>
+<tr>
+<td>小陆</td>
+<td>男</td>
+<td>92</td>
+</tr>
+</tbody></table>
+<p>原生方式写表格：</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>姓名</th>
+<th>分数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>男</td>
+<td>75</td>
+</tr>
+<tr>
+<td>小红</td>
+<td>女</td>
+<td>79</td>
+</tr>
+<tr>
+<td>小陆</td>
+<td>男</td>
+<td>92</td>
+</tr>
+</tbody></table>
+<p>为表格第二列指定方向：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th align="right">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>为知笔记VIP</td>
+<td align="right">60元/年</td>
+</tr>
+<tr>
+<td>有道云笔记会员</td>
+<td align="right">198元/年</td>
+</tr>
+</tbody></table>
+</div></body></html>

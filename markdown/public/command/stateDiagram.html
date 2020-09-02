@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h1 id="state-diagrams">State diagrams</h1>
+<blockquote>
+<p>&quot;A state diagram is a type of diagram used in computer science and related fields to describe the behavior of systems. State diagrams require that the system described is composed of a finite number of states; sometimes, this is indeed the case, while at other times this is a reasonable abstraction.&quot; Wikipedia</p>
+</blockquote>
+<p>Mermaid can render state diagrams. The syntax tries to be compliant with the syntax used in plantUml as this will make it easier for users to share diagrams between mermaid and plantUml.</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]</code></pre>
+<pre><code class="language-mermaid">stateDiagram
+    [*] --&gt; Still
+    Still --&gt; [*]
+
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]</code></pre>
+<p>In state diagrams systems are described in terms of its states and how the systems state can change to another state via a transitions. The example diagram above shows three states <strong>Still</strong>, <strong>Moving</strong> and <strong>Crash</strong>. You start in the state of Still. From Still you can change the state to Moving. In Moving you can change the state either back to Still or to Crash. There is no transition from Still to Crash.</p>
+<h2 id="states">States</h2>
+<p>A state can be declared in multiple ways. The simplest way is to define a state id as a description.</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    s1</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    s1</code></pre>
+<p>Another way is by using the state keyword with a description as per below:</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    state &quot;This is a state description&quot; as s2</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    state &quot;This is a state description&quot; as s2</code></pre>
+<p>Another way to define a state with a description is to define the state id followed by a colon and the description:</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    s2 : This is a state description</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    s2 : This is a state description</code></pre>
+<h2 id="transitions">Transitions</h2>
+<p>Transitions are path/edges when one state passes into another. This is represented using text arrow, &quot;--&gt;&quot;.</p>
+<p>When you define a transition between two states and the states are not already defined the undefined states are defined with the id from the transition. You can later add descriptions to states defined this way.</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    s1 --&gt; s2</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    s1 --&gt; s2</code></pre>
+<p>It is possible to add text to a transition. To describe what it represents.</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    s1 --&gt; s2: A transition</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    s1 --&gt; s2: A transition</code></pre>
+<h2 id="start-and-end">Start and End</h2>
+<p>There are two special states indicating the start and stop of the diagram. These are written with the [*] syntax and the direction of the transition to it defines it either as a start or a stop state.</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    [*] --&gt; s1
+    s1 --&gt; [*]</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; s1
+    s1 --&gt; [*]</code></pre>
+<h2 id="composite-states">Composite states</h2>
+<p>In a real world use of state diagrams you often end up with diagrams that are multi-dimensional as one state can
+have several internal states. These are called composite states in this terminology.</p>
+<p>In order to define a composite state you need to use the state keyword followed by and id and the body of the composite state between {}. See the example below:</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    [*] --&gt; First
+    state First {
+        [*] --&gt; second
+        second --&gt; [*]
+    }</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; First
+    state First {
+        [*] --&gt; second
+        second --&gt; [*]
+    }</code></pre>
+<p>You can do this in several layers:</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    [*] --&gt; First
+
+    state First {
+        [*] --&gt; Second
+
+        state Second {
+            [*] --&gt; second
+            second --&gt; Third
+
+            state Third {
+                [*] --&gt; third
+                third --&gt; [*]
+            }
+        }
+    }</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; First
+
+    state First {
+        [*] --&gt; Second
+        state Second {
+            [*] --&gt; second2
+            second2 --&gt; Third
+
+            state Third {
+                [*] --&gt; third
+                third --&gt; [*]
+            }
+        }
+    }</code></pre>
+<p>You can also define transitions also between composite states:</p>
+<pre><code class="language-markdown">stateDiagram-v2
+    [*] --&gt; First
+    First --&gt; Second
+    First --&gt; Third
+
+    state First {
+        [*] --&gt; fir
+        fir --&gt; [*]
+    }
+    state Second {
+        [*] --&gt; sec
+        sec --&gt; [*]
+    }
+    state Third {
+        [*] --&gt; thi
+        thi --&gt; [*]
+    }</code></pre>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; First
+    First --&gt; Second
+    First --&gt; Third
+
+    state First {
+        [*] --&gt; fir
+        fir --&gt; [*]
+    }
+    state Second {
+        [*] --&gt; sec
+        sec --&gt; [*]
+    }
+    state Third {
+        [*] --&gt; thi
+        thi --&gt; [*]
+    }</code></pre>
+<p><em>You can not define transitions between internal states belonging to different composite states</em></p>
+<h2 id="forks">Forks</h2>
+<p>It is possible to specify a fork in the diagram using &lt;&lt;fork&gt;&gt; &lt;&lt;join&gt;&gt;.</p>
+<pre><code class="language-markdown">   stateDiagram-v2
+    state fork_state &lt;&lt;fork&gt;&gt;
+      [*] --&gt; fork_state
+      fork_state --&gt; State2
+      fork_state --&gt; State3
+
+      state join_state &lt;&lt;join&gt;&gt;
+      State2 --&gt; join_state
+      State3 --&gt; join_state
+      join_state --&gt; State4
+      State4 --&gt; [*]</code></pre>
+<pre><code class="language-mermaid">   stateDiagram-v2
+    state fork_state &lt;&lt;fork&gt;&gt;
+      [*] --&gt; fork_state
+      fork_state --&gt; State2
+      fork_state --&gt; State3
+
+      state join_state &lt;&lt;join&gt;&gt;
+      State2 --&gt; join_state
+      State3 --&gt; join_state
+      join_state --&gt; State4
+      State4 --&gt; [*]
+</code></pre>
+<h2 id="notes">Notes</h2>
+<p>Sometimes nothing says it better then a Post-it note. That is also the case in state diagrams.</p>
+<p>Here you can choose to put the note to the <em>right of</em> or to the <em>left of</em> a node.</p>
+<pre><code class="language-markdown">    stateDiagram-v2
+        State1: The state with a note
+        note right of State1
+            Important information! You can write
+            notes.
+        end note
+        State1 --&gt; State2
+        note left of State2 : This is the note to the left.</code></pre>
+<pre><code class="language-mermaid">    stateDiagram-v2
+    State1: The state with a note
+    note right of State1
+      Important information! You can write
+      notes.
+    end note
+    State1 --&gt; State2
+    note left of State2 : This is the note to the left.
+</code></pre>
+<h2 id="concurrency">Concurrency</h2>
+<p>As in plantUml you can specify concurrency using the -- symbol.</p>
+<pre><code class="language-markdown">    stateDiagram-v2
+        [*] --&gt; Active
+
+        state Active {
+            [*] --&gt; NumLockOff
+            NumLockOff --&gt; NumLockOn : EvNumLockPressed
+            NumLockOn --&gt; NumLockOff : EvNumLockPressed
+            --
+            [*] --&gt; CapsLockOff
+            CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
+            CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
+            --
+            [*] --&gt; ScrollLockOff
+            ScrollLockOff --&gt; ScrollLockOn : EvCapsLockPressed
+            ScrollLockOn --&gt; ScrollLockOff : EvCapsLockPressed
+        }</code></pre>
+<pre><code class="language-mermaid">    stateDiagram-v2
+        [*] --&gt; Active
+
+        state Active {
+            [*] --&gt; NumLockOff
+            NumLockOff --&gt; NumLockOn : EvNumLockPressed
+            NumLockOn --&gt; NumLockOff : EvNumLockPressed
+            --
+            [*] --&gt; CapsLockOff
+            CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
+            CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
+            --
+            [*] --&gt; ScrollLockOff
+            ScrollLockOff --&gt; ScrollLockOn : EvCapsLockPressed
+            ScrollLockOn --&gt; ScrollLockOff : EvCapsLockPressed
+        }</code></pre>
+<h2 id="comments">Comments</h2>
+<p>Comments can be entered within a state diagram chart, which will be ignored by the parser.  Comments need to be on their own line, and must be prefaced with <code>%%</code> (double percent signs). Any text after the start of the comment to the next newline will be treated as a comment, including any diagram syntax</p>
+<pre><code>stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+%% this is a comment
+    Still --&gt; Moving
+    Moving --&gt; Still %% another comment
+    Moving --&gt; Crash
+    Crash --&gt; [*]</code></pre><h2 id="styling">Styling</h2>
+<p>Styling of the a state diagram is done by defining a number of css classes.  During rendering these classes are extracted from the file located at src/themes/state.scss</p>
+</div></body></html>

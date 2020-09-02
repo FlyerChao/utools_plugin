@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h1 id="flowcharts---basic-syntax"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=flowcharts-basic-syntax">Flowcharts - Basic Syntax</a></h1>
+<h2 id="graph"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=graph">Graph</a></h2>
+<p>This statement declares the direction of the Flowchart.</p>
+<p>This declares the graph is oriented from top to bottom (<code>TD</code> or <code>TB</code>).</p>
+<pre><code class="language-markdown">graph TD
+    Start --&gt; Stop</code></pre>
+<pre><code class="language-mermaid">graph TD
+    Start --&gt; Stop</code></pre>
+<p>This declares the graph is oriented from left to right (<code>LR</code>).</p>
+<pre><code class="language-markdown">graph LR
+    Start --&gt; Stop</code></pre>
+<pre><code class="language-mermaid">graph LR
+    Start --&gt; Stop</code></pre>
+<h2 id="flowchart-orientation"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=flowchart-orientation">Flowchart Orientation</a></h2>
+<p>Possible FlowChart orientations are:</p>
+<ul>
+<li>TB - top to bottom</li>
+<li>TD - top-down/ same as top to bottom</li>
+<li>BT - bottom to top</li>
+<li>RL - right to left</li>
+<li>LR - left to right</li>
+</ul>
+<h2 id="flowcharts"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=flowcharts">Flowcharts</a></h2>
+<p>This renders a flowchart that allows for features such as: more arrow types, multi directional arrows, and linking to and from subgraphs.</p>
+<p>Apart from the graph type, the syntax is the same. This is currently experimental but when the beta period is over, both the graph and flowchart keywords will render in the new way. This means it is ok to start beta testing flowcharts.</p>
+<h2 id="an-important-note-on-flowchart-nodes-do-not-type-the-word-end-as-a-flowchart-node-capitalize-all-or-any-one-the-letters-to-keep-the-flowchart-from-breaking-ie-end-or-end-or-you-can-apply-thisworkaround"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=an-important-note-on-flowchart-nodes-do-not-type-the-word-quotendquot-as-a-flowchart-node-capitalize-all-or-any-one-the-letters-to-keep-the-flowchart-from-breaking-ie-quotendquot-or-quotendquot-or-you-can-apply-this-a-hrefhttpsgithubcommermaid-jsmermaidissues1444issuecomment-639528897-target_blank-relnoopenerworkaround">An important note on Flowchart nodes, do not type the word &quot;end&quot; as a Flowchart node. Capitalize all or any one the letters to keep the flowchart from breaking, i.e, &quot;End&quot; or &quot;END&quot;. Or you can apply this</a><a href="https://github.com/mermaid-js/mermaid/issues/1444#issuecomment-639528897">workaround</a>.</h2>
+<h2 id="nodes--shapes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=nodes-amp-shapes">Nodes &amp; shapes</a></h2>
+<h3 id="a-node-default"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-default">A node (default)</a></h3>
+<pre><code class="language-markdown">graph LR
+    id</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id</code></pre>
+<h1 id="note-that-the-id-is-what-is-displayed-in-the-box"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=note-that-the-id-is-what-is-displayed-in-the-box">Note that the id is what is displayed in the box.</a></h1>
+<h3 id="a-node-with-text"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-with-text">A node with text</a></h3>
+<p>It is also possible to set text in the box that differs from the id. If this is done several times, it is the last text found for the node that will be used. Also if you define edges for the node later on, you can omit text definitions. The one previously defined will be used when rendering the box.</p>
+<pre><code class="language-markdown">graph LR
+    id1[This is the text in the box]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1[This is the text in the box]</code></pre>
+<h2 id="node-shapes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=node-shapes">Node Shapes</a></h2>
+<h3 id="a-node-with-round-edges"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-with-round-edges">A node with round edges</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1(This is the text in the box)</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1(This is the text in the box)</code></pre>
+<h3 id="a-stadium-shaped-node"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-stadium-shaped-node">A stadium-shaped node</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1([This is the text in the box])</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1([This is the text in the box])</code></pre>
+<h3 id="a-node-in-a-subroutine-shape"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-in-a-subroutine-shape">A node in a subroutine shape</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1[[This is the text in the box]]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1[[This is the text in the box]]</code></pre>
+<h3 id="a-node-in-a-cylindrical-shape"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-in-a-cylindrical-shape">A node in a cylindrical shape</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1[(Database)]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1[(Database)]</code></pre>
+<h3 id="a-node-in-the-form-of-a-circle"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-in-the-form-of-a-circle">A node in the form of a circle</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1((This is the text in the circle))</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1((This is the text in the circle))</code></pre>
+<h3 id="a-node-in-an-asymetric-shape"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-in-an-asymetric-shape">A node in an asymetric shape</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1&gt;This is the text in the box]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1&gt;This is the text in the box]</code></pre>
+<p>Currently only the shape above is possible and not its mirror. <em>This might change with future releases.</em></p>
+<h3 id="a-node-rhombus"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-node-rhombus">A node (rhombus)</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1{This is the text in the box}</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1{This is the text in the box}</code></pre>
+<h3 id="a-hexagon-node"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-hexagon-node">A hexagon node</a></h3>
+<pre><code class="language-markdown">graph LR
+    id1{{This is the text in the box}}</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1{{This is the text in the box}}</code></pre>
+<h3 id="parallelogram"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=parallelogram">Parallelogram</a></h3>
+<pre><code class="language-markdown">graph TD
+    id1[/This is the text in the box/]</code></pre>
+<pre><code class="language-mermaid">graph TD
+    id1[/This is the text in the box/]</code></pre>
+<h3 id="parallelogram-alt"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=parallelogram-alt">Parallelogram alt</a></h3>
+<pre><code class="language-markdown">graph TD
+    id1[\This is the text in the box\]</code></pre>
+<pre><code class="language-mermaid">graph TD
+    id1[\This is the text in the box\]</code></pre>
+<h3 id="trapezoid"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=trapezoid">Trapezoid</a></h3>
+<pre><code class="language-markdown">graph TD
+    A[/Christmas\]</code></pre>
+<pre><code class="language-mermaid">graph TD
+    A[/Christmas\]</code></pre>
+<h3 id="trapezoid-alt"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=trapezoid-alt">Trapezoid alt</a></h3>
+<pre><code class="language-markdown">graph TD
+    B[\Go shopping/]</code></pre>
+<pre><code class="language-mermaid">graph TD
+    B[\Go shopping/]</code></pre>
+<h2 id="links-between-nodes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=links-between-nodes">Links between nodes</a></h2>
+<p>Nodes can be connected with links/edges. It is possible to have different types of links or attach a text string to a link.</p>
+<h3 id="a-link-with-arrow-head"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-link-with-arrow-head">A link with arrow head</a></h3>
+<pre><code class="language-markdown">graph LR
+    A--&gt;B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A--&gt;B</code></pre>
+<h3 id="an-open-link"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=an-open-link">An open link</a></h3>
+<pre><code class="language-markdown">graph LR
+    A --- B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A --- B</code></pre>
+<h3 id="text-on-links"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=text-on-links">Text on links</a></h3>
+<pre><code class="language-markdown">graph LR
+    A-- This is the text! ---B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A-- This is the text! ---B</code></pre>
+<p>or</p>
+<pre><code class="language-markdown">graph LR
+    A---|This is the text|B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A---|This is the text|B</code></pre>
+<h3 id="a-link-with-arrow-head-and-text"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=a-link-with-arrow-head-and-text">A link with arrow head and text</a></h3>
+<pre><code class="language-markdown">graph LR
+    A--&gt;|text|B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A--&gt;|text|B</code></pre>
+<p>or</p>
+<pre><code class="language-markdown">graph LR
+    A-- text --&gt;B</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A-- text --&gt;B</code></pre>
+<h3 id="dotted-link"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=dotted-link">Dotted link</a></h3>
+<pre><code class="language-markdown">graph LR;
+   A-.-&gt;B;</code></pre>
+<pre><code class="language-mermaid">graph LR;
+   A-.-&gt;B;</code></pre>
+<h3 id="dotted-link-with-text"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=dotted-link-with-text">Dotted link with text</a></h3>
+<pre><code class="language-markdown">graph LR
+   A-. text .-&gt; B</code></pre>
+<pre><code class="language-mermaid">graph LR
+   A-. text .-&gt; B</code></pre>
+<h3 id="thick-link"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=thick-link">Thick link</a></h3>
+<pre><code class="language-markdown">graph LR
+   A ==&gt; B</code></pre>
+<pre><code class="language-mermaid">graph LR
+   A ==&gt; B</code></pre>
+<h3 id="thick-link-with-text"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=thick-link-with-text">Thick link with text</a></h3>
+<pre><code class="language-markdown">graph LR
+   A == text ==&gt; B</code></pre>
+<pre><code class="language-mermaid">graph LR
+   A == text ==&gt; B</code></pre>
+<h3 id="chaining-of-links"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=chaining-of-links">Chaining of links</a></h3>
+<p>It is possible declare many links in the same line as per below:</p>
+<pre><code class="language-markdown">graph LR
+   A -- text --&gt; B -- text2 --&gt; C</code></pre>
+<pre><code class="language-mermaid">graph LR
+   A -- text --&gt; B -- text2 --&gt; C</code></pre>
+<p>It is also possible to declare multiple nodes links in the same line as per below:</p>
+<pre><code class="language-markdown">graph LR
+   a --&gt; b &amp; c--&gt; d</code></pre>
+<pre><code class="language-mermaid">graph LR
+   a --&gt; b &amp; c--&gt; d</code></pre>
+<p>You can then describe dependencies in a very expressive way. Like the onliner below:</p>
+<pre><code class="language-markdown">graph TB
+    A &amp; B--&gt; C &amp; D</code></pre>
+<pre><code class="language-mermaid">graph TB
+    A &amp; B--&gt; C &amp; D</code></pre>
+<p>If you describe the same diagram using the the basic syntax, it will take four lines. A word of warning, one could go overboard with this making the graph harder to read in markdown form. The Swedish word <code>lagom</code> comes to mind. It means, not to much and not to little. This goes for expressive syntaxes as well.</p>
+<pre><code class="language-markdown">graph TB
+    A --&gt; C
+    A --&gt; D
+    B --&gt; C
+    B --&gt; D</code></pre>
+<pre><code class="language-mermaid">graph TB
+    A --&gt; C
+    A --&gt; D
+    B --&gt; C
+    B --&gt; D</code></pre>
+<h2 id="beta-new-arrow-types"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=beta-new-arrow-types">Beta: New arrow types</a></h2>
+<p>When using flowchart instead of graph there is the are new types of arrows supported as per below:</p>
+<pre><code class="language-markdown">flowchart LR
+    A --o B
+    B --x C</code></pre>
+<pre><code class="language-mermaid">flowchart LR
+    A --o B
+    B --x C</code></pre>
+<h2 id="beta-multi-directional-arrows"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=beta-multi-directional-arrows">Beta: multi directional arrows</a></h2>
+<p>When using flowchart instead of graph there is the possibility to use multidirectional arrows.</p>
+<pre><code class="language-markdown">flowchart LR
+    A o--o B
+    B &lt;--&gt; C
+    C x--x D</code></pre>
+<pre><code class="language-mermaid">flowchart LR
+    A o--o B
+    B &lt;--&gt; C
+    C x--x D</code></pre>
+<h2 id="special-characters-that-break-syntax"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=special-characters-that-break-syntax">Special characters that break syntax</a></h2>
+<p>It is possible to put text within quotes in order to render more troublesome characters. As in the example below:</p>
+<pre><code class="language-markdown">graph LR
+    id1[&quot;This is the (text) in the box&quot;]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1[&quot;This is the (text) in the box&quot;]</code></pre>
+<h3 id="entity-codes-to-escape-characters"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=entity-codes-to-escape-characters">Entity codes to escape characters</a></h3>
+<p>It is possible to escape characters using the syntax examplified here.</p>
+<pre><code class="language-markdown">    graph LR
+        A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]</code></pre>
+<pre><code class="language-mermaid">graph LR
+        A[&quot;A double quote:#quot;&quot;] --&gt;B[&quot;A dec char:#9829;&quot;]</code></pre>
+<h2 id="subgraphs"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=subgraphs">Subgraphs</a></h2>
+<pre><code class="language-markdown">subgraph title
+    graph definition
+end</code></pre>
+<p>An example below:</p>
+<pre><code class="language-markdown">graph TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end</code></pre>
+<pre><code class="language-mermaid">graph TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end</code></pre>
+<p>You can also set an excplicit id for the subgraph.</p>
+<pre><code class="language-markdown">graph TB
+    c1--&gt;a2
+    subgraph ide1 [one]
+    a1--&gt;a2
+    end</code></pre>
+<pre><code class="language-mermaid">graph TB
+    c1--&gt;a2
+    subgraph ide1 [one]
+    a1--&gt;a2
+    end</code></pre>
+<h2 id="beta-flowcharts"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=beta-flowcharts">Beta: flowcharts</a></h2>
+<p>With the graphtype flowcharts it is also possible to set edges to and from subgraphs as in the graph below.</p>
+<pre><code class="language-markdown">flowchart TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end
+    one --&gt; two
+    three --&gt; two
+    two --&gt; c2</code></pre>
+<pre><code class="language-mermaid">flowchart TB
+    c1--&gt;a2
+    subgraph one
+    a1--&gt;a2
+    end
+    subgraph two
+    b1--&gt;b2
+    end
+    subgraph three
+    c1--&gt;c2
+    end
+    one --&gt; two
+    three --&gt; two
+    two --&gt; c2</code></pre>
+<h2 id="interactiontypora中暂时不支持如下设计"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=interaction">Interaction</a>(typora中暂时不支持如下设计)</h2>
+<p>It is possible to bind a click event to a node, the click can lead to either a javascript callback or to a link which will be opened in a new browser tab. <strong>Note</strong>: This functionality is disabled when using <code>securityLevel=&#39;strict&#39;</code> and enabled when using <code>securityLevel=&#39;loose&#39;</code>.</p>
+<pre><code>click nodeId callback</code></pre><ul>
+<li>nodeId is the id of the node</li>
+<li>callback is the name of a javascript function defined on the page displaying the graph, the function will be called with the nodeId as parameter.</li>
+</ul>
+<p>Examples of tooltip usage below:</p>
+<pre><code class="language-markdown">&lt;script&gt;
+  var callback = function(){
+      alert(&#39;A callback was triggered&#39;);
+  }
+&lt;/script&gt;
+graph LR;
+    A--&gt;B;
+    click A callback &quot;Tooltip for a callback&quot;
+    click B &quot;http://www.github.com&quot; &quot;This is a tooltip for a link&quot;</code></pre>
+<p>The tooltip text is surrounded in double quotes. The styles of the tooltip are set by the class .mermaidTooltip.</p>
+<p>A<a href="http://www.github.com/">B</a></p>
+<blockquote>
+<p><strong>Success</strong> The tooltip functionality and the ability to link to urls are available from version 0.5.2.</p>
+</blockquote>
+<p>Due to limitations with how Docsify handles JavaScript callback functions, an alternate working demo for the above code can be viewed at <a href="https://jsfiddle.net/s37cjoau/3/">this jsfiddle</a>.</p>
+<p>Links are opened in the same browser tab/window by default. It is possible to change this by adding a link target to the click definition (<code>_self</code>, <code>_blank</code>, <code>_parent</code> and <code>_top</code> are supported):</p>
+<pre><code class="language-markdown">graph LR;
+    A--&gt;B;
+    B--&gt;C;
+    click A &quot;http://www.github.com&quot; _blank
+    click B &quot;http://www.github.com&quot; &quot;Open this in a new tab&quot; _blank</code></pre>
+<p><a href="http://www.github.com/">A</a><a href="http://www.github.com/">B</a>C</p>
+<p>Beginners tip, a full example using interactive links in a html context:</p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;div class=&quot;mermaid&quot;&gt;
+    graph LR;
+        A--&gt;B;
+        click A callback &quot;Tooltip&quot;
+        click B &quot;http://www.github.com&quot; &quot;This is a link&quot;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    var callback = function(){
+        alert(&#39;A callback was triggered&#39;);
+    }
+    var config = {
+        startOnLoad:true,
+        flowchart:{
+            useMaxWidth:true,
+            htmlLabels:true,
+            curve:&#39;cardinal&#39;,
+        },
+        securityLevel:&#39;loose&#39;,
+    };
+
+    mermaid.initialize(config);
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="comments"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=comments">Comments</a></h3>
+<p>Comments can be entered within a flow diagram, which will be ignored by the parser. Comments need to be on their own line, and must be prefaced with <code>%%</code> (double percent signs). Any text after the start of the comment to the next newline will be treated as a comment, including any flow syntax</p>
+<pre><code class="language-markdown">graph LR
+%% this is a comment A -- text --&gt; B{node}
+   A -- text --&gt; B -- text2 --&gt; C</code></pre>
+<pre><code class="language-mermaid">graph LR
+%% this is a comment A -- text --&gt; B{node}
+   A -- text --&gt; B -- text2 --&gt; C</code></pre>
+<h2 id="styling-and-classes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=styling-and-classes">Styling and classes</a></h2>
+<h3 id="styling-links"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=styling-links">Styling links</a></h3>
+<p>It is possible to style links. For instance you might want to style a link that is going backwards in the flow. As links have no ids in the same way as nodes, some other way of deciding what style the links should be attached to is required. Instead of ids, the order number of when the link was defined in the graph is used. In the example below the style defined in the linkStyle statement will belong to the fourth link in the graph:</p>
+<pre><code>linkStyle 3 stroke:#ff3,stroke-width:4px,color:red;</code></pre><h3 id="styling-a-node"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=styling-a-node">Styling a node</a></h3>
+<p>It is possible to apply specific styles such as a thicker border or a different background color to a node.</p>
+<pre><code class="language-markdown">graph LR
+    id1(Start)--&gt;id2(Stop)
+    style id1 fill:#f9f,stroke:#333,stroke-width:4px
+    style id2 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5</code></pre>
+<pre><code class="language-mermaid">graph LR
+    id1(Start)--&gt;id2(Stop)
+    style id1 fill:#f9f,stroke:#333,stroke-width:4px
+    style id2 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5</code></pre>
+<h4 id="classes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=classes">Classes</a></h4>
+<p>More convenient then defining the style every time is to define a class of styles and attach this class to the nodes that should have a different look.</p>
+<p>a class definition looks like the example below:</p>
+<pre><code class="language-markdown">    classDef className fill:#f9f,stroke:#333,stroke-width:4px;</code></pre>
+<p>Attachment of a class to a node is done as per below:</p>
+<pre><code class="language-markdown">    class nodeId1 className;</code></pre>
+<p>It is also possible to attach a class to a list of nodes in one statement:</p>
+<pre><code class="language-markdown">    class nodeId1,nodeId2 className;</code></pre>
+<p>A shorter form of adding a class is to attach the classname to the node using the <code>:::</code>operator as per below:</p>
+<pre><code class="language-markdown">graph LR
+    A:::someclass --&gt; B
+    classDef someclass fill:#f96;</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A:::someclass --&gt; B
+    classDef someclass fill:#f96;</code></pre>
+<h3 id="css-classes"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=css-classes">Css classes</a></h3>
+<p>It is also possible to predefine classes in css styles that can be applied from the graph definition as in the example below:</p>
+<p><strong>Example style</strong></p>
+<pre><code class="language-html">&lt;style&gt;
+    .cssClass &gt; rect{
+        fill:#FF0000;
+        stroke:#FFFF00;
+        stroke-width:4px;
+    }
+&lt;/style&gt;</code></pre>
+<p><strong>Example definition</strong></p>
+<pre><code class="language-markdown">graph LR;
+    A--&gt;B[AAA&lt;span&gt;BBB&lt;/span&gt;];
+    B--&gt;D;
+    class A cssClass;</code></pre>
+<pre><code class="language-mermaid">graph LR;
+    A--&gt;B[AAA&lt;span&gt;BBB&lt;/span&gt;];
+    B--&gt;D;
+    class A cssClass;</code></pre>
+<h3 id="default-class"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=default-class">Default class</a></h3>
+<p>If a class is named default it will be assigned to all classes without specific class definitions.</p>
+<pre><code class="language-markdown">    classDef default fill:#f9f,stroke:#333,stroke-width:4px;</code></pre>
+<h2 id="basic-support-for-fontawesome"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=basic-support-for-fontawesome">Basic support for fontawesome</a></h2>
+<p>It is possible to add icons from fontawesome.</p>
+<p>The icons are acessed via the syntax fa:#icon class name#.</p>
+<pre><code class="language-markdown">graph TD
+    B[&quot;fa:fa-twitter for peace&quot;]
+    B--&gt;C[fa:fa-ban forbidden]
+    B--&gt;D(fa:fa-spinner);
+    B--&gt;E(A fa:fa-camera-retro perhaps?);</code></pre>
+<pre><code class="language-mermaid">graph TD
+    B[&quot;fa:fa-twitter for peace&quot;]
+    B--&gt;C[fa:fa-ban forbidden]
+    B--&gt;D(fa:fa-spinner);
+    B--&gt;E(A fa:fa-camera-retro perhaps?);</code></pre>
+<h2 id="graph-declarations-with-spaces-between-vertices-and-link-and-without-semicolon"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=graph-declarations-with-spaces-between-vertices-and-link-and-without-semicolon">Graph declarations with spaces between vertices and link and without semicolon</a></h2>
+<ul>
+<li>In graph declarations, the statements also can now end without a semicolon. After release 0.2.16, ending a graph statement with semicolon is just optional. So the below graph declaration is also valid along with the old declarations of the graph.</li>
+<li>A single space is allowed between vertices and the link. However there should not be any space between a vertex and its text and a link and its text. The old syntax of graph declaration will also work and hence this new feature is optional and is introduce to improve readability.</li>
+</ul>
+<p>Below is the new declaration of the graph edges which is also valid along with the old declaration of the graph edges.</p>
+<pre><code class="language-markdown">graph LR
+    A[Hard edge] --&gt;|Link text| B(Round edge)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result one]
+    C --&gt;|Two| E[Result two]</code></pre>
+<pre><code class="language-mermaid">graph LR
+    A[Hard edge] --&gt;|Link text| B(Round edge)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result one]
+    C --&gt;|Two| E[Result two]</code></pre>
+<h2 id="configuration"><a href="https://mermaid-js.github.io/mermaid/#/./flowchart?id=configuration">Configuration...</a></h2>
+<p>Is it possible to adjust the width of the rendered flowchart.</p>
+<p>This is done by defining <strong>mermaid.flowchartConfig</strong> or by the CLI to use a json file with the configuration. How to use the CLI is described in the mermaidCLI page. mermaid.flowchartConfig can be set to a JSON string with config parameters or the corresponding object.</p>
+<pre><code class="language-javascript">mermaid.flowchartConfig = {
+    width: 100%
+}</code></pre>
+</div></body></html>

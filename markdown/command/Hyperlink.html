@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h2 id="超链接">超链接</h2>
+<p>Markdown 支持两种形式的链接语法： 行内式，参考式，还有自动链接三种形式，行内式一般使用较多。</p>
+<h3 id="31-行内式">3.1. 行内式</h3>
+<p><strong>语法说明：</strong></p>
+<ul>
+<li>[]里写链接文字，()里写链接地址, ()中的&quot;&quot;中可以为链接指定title属性，title属性可加可不加。title属性的效果是鼠标悬停在链接上会出现指定的 title文字。<a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80" title="链接标题">链接文字</a>这样的形式。<strong><em>链接地址与链接标题前有一个空格。\</em></strong></li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre><code class="language-cpp">欢迎来到[github](http://www.github.com)</code></pre>
+<p><strong>显示效果：</strong>
+ 欢迎来到<a href="https://www.github.com">github</a></p>
+<h3 id="32-参考式">3.2. 参考式</h3>
+<p>参考式超链接一般用在学术论文上面，或者另一种情况，如果某一个链接在文章中多处使用，那么使用引用 的方式创建链接将非常好，它可以让你对链接进行统一的管理。</p>
+<p><strong>语法说明：</strong>
+ 参考式链接分为两部分，文中的写法 [链接文字][链接标记]，在文本的任意位置添加[链接标记]:链接地址 &quot;链接标题&quot;，<strong><em>链接地址与链接标题前有一个空格。\</em></strong></p>
+<p>如果链接文字本身可以做为链接标记，你也可以写成[链接文字][]
+ [链接文字]：链接地址的形式，见代码的最后一行。</p>
+<p><strong>代码：</strong></p>
+<pre><code class="language-ruby">我经常去的几个网站[GitHub][1]、[知乎][2]以及[简书][3]
+[简书][3]是一个不错的[写作社区][]。
+
+[1]:https://github.com &quot;GitHub&quot;
+[2]:https://www.zhihu.com &quot;知乎&quot;
+[3]:http://www.jianshu.com &quot;简书&quot;
+[写作社区]:http://www.jianshu.com</code></pre>
+<p><strong>显示效果：</strong>
+ 我经常去的几个网站<a href="https://github.com">GitHub</a>、<a href="https://www.zhihu.com">知乎</a>以及<a href="https://www.jianshu.com">简书</a>
+ <a href="https://www.jianshu.com">简书</a>是一个不错的<a href="https://www.jianshu.com">写作社区</a>。</p>
+<h3 id="33-自动链接">3.3. 自动链接</h3>
+<p><strong>语法说明：</strong>
+ Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用&lt;&gt;;包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：</p>
+<p><strong>代码：</strong></p>
+<pre><code class="language-dart">&lt;http://example.com/&gt;
+&lt;address@example.com&gt;</code></pre>
+<p><strong>显示效果：</strong>
+ <a href="http://example.com/">http://example.com/</a>
+ <a href="mailto:address@example.com">address@example.com</a></p>
+</div></body></html>

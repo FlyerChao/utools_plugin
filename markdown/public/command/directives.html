@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh_CN"><head><meta charset="UTF-8"><title></title><link rel="stylesheet" href="doc.css" /></head>
+  <body><div class="markdown-body"><h2 id="directives">Directives</h2>
+<h2 id="directives-were-added-in-version-860-please-read-it-for-more-information">Directives were added in <a href="/8.6.0_docs.md">Version 8.6.0</a>. Please Read it for more information.</h2>
+<h2 id="directives-1">Directives</h2>
+<p>With this version, directives are supported. Directives are divided in two sets, by priority. the first set, containing &#39;init&#39; or &#39;initialize&#39; directives take priority. While the other set, containing all other kinds of directives are considered only after &#39;init&#39; and the graph-type declared.</p>
+<h4 id="init">Init</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>init</td>
+<td>modifies configurations</td>
+<td>Directive</td>
+<td>Optional</td>
+<td>Any parameters not included in the secure array</td>
+</tr>
+</tbody></table>
+<p><strong>Notes:</strong></p>
+<p>init would be an argument-directive: %%{init: { <strong>insert argument here</strong>}}%%</p>
+<p>The json object that is passed as {<strong>argument</strong> } must be valid, quoted json or it will be ignored.</p>
+<p>The init/initialize directive is parsed early in the flow, enough to be able to re-initialize mermaid with a new configuration object. Example:</p>
+<pre><code>%%{init: { &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;dark&#39; } }%%
+graph &gt;
+A--&gt;B</code></pre><p>will set the <code>logLevel</code> to <code>debug</code> and the <code>theme</code> to <code>dark</code> for a flowchart diagram.</p>
+<p>Note: &#39;init&#39; or &#39;initialize&#39; are both acceptable as init directives. Also note that init directives are coalesced. This means:</p>
+<pre><code>%%{init: { &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;forest&#39; } }%%
+%%{initialize: { &#39;logLevel&#39;: &#39;fatal&#39;, &quot;theme&quot;:&#39;dark&#39;, &#39;startOnLoad&#39;: true } }%%
+...</code></pre><p>will result an init object looking like this:</p>
+<pre><code>{
+  logLevel: &#39;fatal&#39;,
+  theme: &#39;dark&#39;,
+  startOnLoad: true
+}</code></pre><p>to be sent to <code>mermaid.initialize(...)</code></p>
+<h4 id="other-directives">Other directives</h4>
+<p>In this category are any directives that follow the graph type declaration. Essentially, these directives will not be processed early in the flow like the init directive. Each individual graph type will handle these directives. As an example:</p>
+<pre><code>%%{init: { &#39;logLevel&#39;: &#39;debug&#39;, &#39;theme&#39;: &#39;dark&#39; } }%%
+sequenceDiagram
+%%{config: { &#39;fontFamily&#39;: &#39;Menlo&#39;, &#39;fontSize&#39;: 18, &#39;fontWeight&#39;: 400} }%%
+Alice-&gt;&gt;Bob: Hi Bob
+Bob-&gt;&gt;Alice: Hi Alice</code></pre><h2 id="chronology">Chronology</h2>
+<p>This will set the <code>logLevel</code> to <code>debug</code> and <code>theme</code> to <code>dark</code> for a sequence diagram. Then, during processing, the config for the sequence diagram is set by the <code>config</code> directive. This directive is handled in the <code>sequenceDb.js</code>. In this example, the fontFamily, fontSize, and fontWeight are all set for this sequence diagram.</p>
+<h4 id="backwards-compatibility">Backwards Compatibility</h4>
+<p>Init directives and any other non-multiline directives should be backwards compatible, because they will be treated as comments in prior versions of mermaid-js.</p>
+<p>Multiline directives, however, will pose an issue and will render an error. This is unavoidable.</p>
+<h3 id="wrapping">Wrapping</h3>
+<h1 id="wrap">Wrap</h1>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Required</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wrap</td>
+<td>a callable text-wrap function</td>
+<td>Directive</td>
+<td>Optional</td>
+<td>%%{wrap}%%</td>
+</tr>
+</tbody></table>
+</div></body></html>

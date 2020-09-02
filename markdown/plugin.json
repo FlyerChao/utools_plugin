@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "pluginName": "Markdown 命令文档",
+    "description": "Markdown 命令文档",
+    "author": "FlyerChaos",
+    "homepage": "https://u.tools",
+    "preload": "preload.js",
+    "logo": "logo.jpg",
+    "features": [
+        {
+            "code": "markdown",
+            "explain": "Markdown 命令文档速查",
+            "cmds": ["Markdown"]
+         }
+    ]
+}
